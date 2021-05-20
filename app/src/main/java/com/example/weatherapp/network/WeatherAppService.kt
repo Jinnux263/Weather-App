@@ -11,7 +11,7 @@ import retrofit2.http.Path
 import kotlin.reflect.jvm.internal.impl.load.java.Constant
 
 val CITY = "dhaka,bd"
-val API = "8e81593bdb9363e310503094470b8bb5"
+val API = ""
 
 private val BASE_URL = "https://api.openweathermap.org/data/2.5/"
 
@@ -38,7 +38,7 @@ private val BASE_URL = "https://api.openweathermap.org/data/2.5/"
      * Interface for the retrofit service
      */
     interface WeatherAppService {
-        @GET("weather?id=1566083&appid=8e81593bdb9363e310503094470b8bb5")
+        @GET("weather?id=1566083&appid={API}")
         suspend fun getWeatherInfo() : String
     }
 
