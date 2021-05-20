@@ -1,9 +1,8 @@
 package com.example.weatherapp.network
 
-import com.squareup.moshi.Json
-
 data class WeatherInfo(
-
-    @Json(name = "wind")
-    val info: String
+    var weather : String,
+    var city : String,
+    var data: String,
+    var temp : String
 )

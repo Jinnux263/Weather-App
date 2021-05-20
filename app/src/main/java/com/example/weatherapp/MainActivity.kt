@@ -19,10 +19,12 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         setContentView(View)
 
-        binding.weather.text = ViewModel.response.value
-        ViewModel.getWeatherInfo()
         binding.btnCheck.setOnClickListener(){
-            binding.weather.text = ViewModel.response.value
+            ViewModel.getWeatherInfo()
+            binding.weather.text = ViewModel.weather.value
+            binding.city.text = ViewModel.city.value
+            binding.temperature.text = ViewModel.temp.value
+            binding.date.text = ViewModel.date.value
         }
     }
 
