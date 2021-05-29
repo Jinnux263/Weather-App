@@ -1,6 +1,9 @@
 package com.example.weatherapp
 
+import android.os.Build
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.view.Menu
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -11,7 +14,6 @@ import com.example.weatherapp.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private val ViewModel : WeatherViewModel by viewModels()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
@@ -29,6 +31,12 @@ class MainActivity : AppCompatActivity() {
         ViewModel.thedayafter.observe(this, {t -> binding.icDayafter.setImageResource(t)})
 
         binding.btnCheck.setOnClickListener(){
+            val vibrator = getSystemService(VIBRATOR_SERVICE) as Vibrator
+            if (Build.VERSION.SDK_INT >= 26) {
+                vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE))
+            } else {
+                vibrator.vibrate(200)
+            }
             ViewModel.getWeatherInfo()
             /*
             binding.weather.text = ViewModel.weather.value
